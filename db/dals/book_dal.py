@@ -6,7 +6,8 @@ from sqlalchemy.orm import Session
 
 from db.models.book import Book
 
-class BookDAL():
+
+class BookDAL:
     def __init__(self, db_session: Session):
         self.db_session = db_session
 
@@ -28,4 +29,4 @@ class BookDAL():
         if release_year:
             q = q.values(release_year=release_year)
         q.execution_options(synchronize_session="fetch")
-        await  self.db_session.execute(q)
+        await self.db_session.execute(q)
