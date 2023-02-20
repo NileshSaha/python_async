@@ -2,10 +2,10 @@ import uvicorn
 from fastapi import FastAPI
 
 from db.config import engine, Base
-from routers import book_router
+from routers import index
 
 app = FastAPI()
-app.include_router(book_router.router)
+app.include_router(index.baseRouter)
 
 
 async def init_db():

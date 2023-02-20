@@ -6,15 +6,17 @@ from db.dals.book_dal import BookDAL
 from db.models.book import Book
 from dependencies import get_book_dal
 
-router = APIRouter()
+router = APIRouter(
+    prefix='/books'
+)
 
 
-@router.post("/books")
+@router.post("/")
 async def create_book(name: str, author: str, release_year: int, book_dal: BookDAL = Depends(get_book_dal)):
     return await book_dal.create_book(name, author, release_year)
 
 
-@router.put("/books/{book_id}")
+@router.put("/{book_id}")
 async def update_book(book_id: int,
                       name: Optional[str] = None,
                       author: Optional[str] = None,
