@@ -1,8 +1,8 @@
 import uvicorn
 from fastapi import FastAPI
 
-from db.config import engine, Base
-from routers import index
+from src.db.config import engine, Base
+from src.routers import index
 
 app = FastAPI()
 app.include_router(index.baseRouter)
